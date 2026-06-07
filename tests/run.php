@@ -73,7 +73,11 @@ $adminProducts = file_text($root . '/public/admin/products.php');
 $adminUsers = file_text($root . '/public/admin/users.php');
 $profile = file_text($root . '/public/profile.php');
 $header = file_text($root . '/includes/header.php');
+$footer = file_text($root . '/includes/footer.php');
+$index = file_text($root . '/public/index.php');
+$cartStore = file_text($root . '/public/assets/js/cart-store.js');
 $css = file_text($root . '/public/assets/css/asiamart.css');
+$ryokanCss = file_text($root . '/public/assets/css/ryokan.css');
 
 foreach ([$schema, $fullDump] as $idx => $sql) {
     $label = $idx === 0 ? 'schema.sql' : 'asiamart_full.sql';
@@ -97,6 +101,11 @@ ok('admin products guards deleting ordered products', contains($adminProducts, '
 ok('admin users guards deleting users with orders', contains($adminUsers, 'SELECT COUNT(*) FROM orders WHERE user_id=?'));
 ok('profile order thumbnails use product_name', contains($profile, "\$it['product_name']"));
 ok('public header renders info flash messages', contains($header, "flash_get('info')"));
+ok('footer loads server cart store', contains($footer, '/assets/js/cart-store.js'));
+ok('cart store exposes legacy CartStore.add', contains($cartStore, 'add(productOrId') && contains($cartStore, 'window.CartStore ='));
+ok('cart store updates ryokan cart bubble', contains($cartStore, '.ry-cart-bubble'));
+ok('home add buttons use CartStore when available', contains($index, 'window.CartStore.add(Number(id), 1)'));
+ok('login form overrides generic form-row grid', contains($ryokanCss, 'body.login-ryokan .login-form .form-row') && contains($ryokanCss, 'display: flex !important') && contains($ryokanCss, 'grid-template-columns: none !important'));
 ok('flash-info style exists', contains($css, '.flash-info'));
 
 require_once $root . '/includes/helpers.php';

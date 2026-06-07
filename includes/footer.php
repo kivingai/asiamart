@@ -67,6 +67,7 @@
     </div>
   </footer>
 
+  <script src="/assets/js/cart-store.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

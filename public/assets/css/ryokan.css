@@ -4540,3 +4540,52 @@ body.login-ryokan .login-visual-title { color: var(--rg-paper) !important; }
 body.login-ryokan .login-visual-title em { color: var(--rg-vermilion) !important; font-style: italic; }
 body.login-ryokan .login-visual-lead { color: rgba(251,246,236,0.7) !important; }
 body.login-ryokan .login-visual-eye { color: rgba(251,246,236,0.6) !important; }
+
+
+/* ============= FIX v4: Login form field rhythm ============= */
+body.login-ryokan .login-form .form-row {
+  display: flex !important;
+  grid-template-columns: none !important;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+body.login-ryokan .login-form .form-row label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--rg-ink-2);
+}
+
+body.login-ryokan .login-form .form-row input {
+  width: 100%;
+  min-height: 50px;
+  box-sizing: border-box;
+  background: #fffdf8;
+  border: 1px solid rgba(28,25,23,0.16);
+  border-radius: 8px;
+  padding: 13px 15px;
+}
+
+body.login-ryokan .login-form .form-row input:hover {
+  border-color: rgba(28,25,23,0.28);
+}
+
+body.login-ryokan .login-form .btn-submit {
+  min-height: 52px;
+}
+
+@media (max-width: 640px) {
+  body.login-ryokan .login-form-wrap {
+    padding: 36px 18px 56px;
+  }
+
+  body.login-ryokan .login-card {
+    padding: 28px 20px;
+  }
+
+  body.login-ryokan .login-title {
+    font-size: 34px;
+  }
+}

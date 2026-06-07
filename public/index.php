@@ -257,6 +257,13 @@ require __DIR__ . '/../includes/header.php';
       const original = btn.textContent;
       btn.textContent = '…';
       try {
+        if (window.CartStore && typeof window.CartStore.add === 'function') {
+          const ok = await window.CartStore.add(Number(id), 1);
+          btn.textContent = ok ? '✓' : '!';
+          setTimeout(() => btn.textContent = original, 1200);
+          return;
+        }
+
         const res = await fetch('/api/cart.php', {
           method: 'POST',
           headers: {'Content-Type':'application/json'},
@@ -265,8 +272,9 @@ require __DIR__ . '/../includes/header.php';
         const data = await res.json();
         if (data.ok) {
           btn.textContent = '✓';
-          const badge = document.querySelector('.cart-badge');
-          if (badge) badge.textContent = data.count;
+          if (window.CartStore && typeof window.CartStore.updateBadge === 'function') {
+            window.CartStore.updateBadge(data.count);
+          }
           setTimeout(() => btn.textContent = original, 1200);
         } else {
           btn.textContent = '!';
