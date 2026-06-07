@@ -1,0 +1,22 @@
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Runtime files
+*.log
+php_errors.log
+/logs/
+/tmp/
+
+# Uploaded product images
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# Dependencies and editor files
+/vendor/
+/node_modules/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

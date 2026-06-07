@@ -1,0 +1,69 @@
+.error-main {
+  min-height: calc(100vh - 96px);
+  display: flex;
+  align-items: center;
+  padding: 2rem 0 6rem;
+}
+
+@media (min-width: 768px) {
+  .error-main {
+    padding: 3rem 0;
+  }
+}
+
+.error-card {
+  width: 100%;
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px);
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  padding: 2rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .error-card {
+    padding: 3rem 2rem;
+  }
+}
+
+.error-code {
+  font-size: clamp(4rem, 14vw, 9rem);
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background-image: linear-gradient(90deg, #111827, #f59e0b, #ef4444);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0;
+}
+
+.error-card h2 {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  margin-top: 0.75rem;
+  color: #111827;
+}
+
+.error-text {
+  max-width: 36rem;
+  margin: 0.9rem auto 0;
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.error-actions {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .error-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
